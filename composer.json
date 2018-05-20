@@ -1,10 +1,10 @@
 {
-    "name": "Kuntaliitto/kuntaliitto",
+    "name": "kuntaliitto/kuntaliitto-theme",
     "type": "drupal-custom-theme",
     "authors": [
         {
             "name": "Jani Koski",
-            "email": ""
+            "email": "jani@koski.xyz"
         }
     ],
     "minimum-stability": "dev",
