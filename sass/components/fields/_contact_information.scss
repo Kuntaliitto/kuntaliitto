@@ -1,0 +1,19 @@
+.field--name-field-contact-information {
+  max-width: none;
+  background: $color-grey;
+
+  .contact-information {
+    max-width: 790px;
+    margin: 0 auto;
+  }
+}
+
+.field--name-field-contacts {
+  > .field__item {
+    padding: 0 0 20px;
+
+    &:first-of-type {
+      padding-top: 20px;
+    }
+  }
+}

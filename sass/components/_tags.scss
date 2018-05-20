@@ -1,0 +1,78 @@
+//tags
+.fieldgroup--tags {
+  padding: 15px 0;
+  .field__items {
+    margin: 0;
+    display: inline-block;
+  }
+  .fieldset-legend {
+    display: none;
+  }
+}
+
+.field--name-field-tags {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.field--name-field-blog-tags {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.field--name-field-keywords,
+.field--name-field-municipalities,
+.field--name-field-topics,
+.field--name-field-tags,
+.field--name-field-blog-tags,
+.field--name-field-kuntaliitto-terms {
+  //padding-top: 20px;
+  //padding-bottom: 20px;
+  .field__item {
+    display: inline-block;
+    margin-right: 15px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+  a {
+    @extend .button--light-blue;
+    display: block;
+  }
+}
+
+.field--name-field-blog-tags {
+  display: block;
+  a {
+    background: $color-blue-2;
+  }
+}
+
+//tags in listing boxes
+.listing-item__keywords {
+  h3 {
+    margin: 0;
+  }
+  a {
+    background: none;
+    color: $color-blue;
+    font-size: 15px;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 0;
+  }
+  .field__items,
+  .field__item {
+    display: block;
+    @include breakpoint($sm) {
+      display: inline-block;
+    }
+  }
+}
+
+.tagger {
+  text-transform: uppercase;
+  font-weight: bold;
+  color: $color-blue;
+  font-size: 15px;
+}
+

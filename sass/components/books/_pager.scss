@@ -1,0 +1,29 @@
+.book__pager {
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+
+  a {
+    display: flex;
+    align-items: center;
+    min-height: 6rem;
+    padding: $spacing-small-2 $base-spacing;
+    background: $color-grey;
+
+    &:hover,
+    &:focus {
+      color: $color-blue;
+      background: $color-light-grey;
+    }
+
+    &[rel="next"] {
+      margin-left: auto;
+      margin-right: 0;
+    }
+  }
+
+  b {
+    padding: 0 $spacing-small-2;
+    font-size: 1.2em;
+  }
+}

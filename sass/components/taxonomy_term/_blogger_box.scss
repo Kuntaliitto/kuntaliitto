@@ -1,0 +1,33 @@
+.blogger-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px;
+  border: 1px solid $color-grey;
+  background: $color-light-grey;
+
+  @include small {
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+}
+
+.blogger-box__right {
+  @include small {
+    padding-left: 20px;
+  }
+}
+
+.blogger-box__left {
+  text-align: center;
+
+  @include small {
+    flex: 0 0 170px;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+  }
+}

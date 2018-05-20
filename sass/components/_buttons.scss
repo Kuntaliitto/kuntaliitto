@@ -1,0 +1,67 @@
+ //hamburger button
+.hamburger-button {
+  display: block;
+  margin: 0 0 0 $spacing-small-1;
+  padding: 12px 10px 10px 10px;
+  border: none;
+  background: none;
+
+  @include medium {
+    display: none;
+  }
+}
+
+.hamburger-button__bar {
+  background-color: white;
+  display: block;
+  height: 3px;
+  width: 30px;
+  margin-bottom: 6px;
+}
+
+.hamburger-button--opened {
+    background: $color-light-blue;
+    .hamburger-button__bar {
+        //background-color: $color-blue;
+    }
+}
+
+//button: blue background, white text
+.button--blue {
+  background: $color-blue;
+  padding: 7px 15px;
+  color: white;
+  border-radius: 2px;
+  display: inline-block;
+  &:hover, &:focus {
+      background: $color-light-blue;
+  }
+}
+
+//button: lighg blue background, white text
+.button--light-blue {
+  background: $color-light-blue;
+  padding: 7px;
+  color: white;
+  border-radius: 2px;
+  display: inline-block;
+}
+
+//button: transparent background, white border and text
+.button--transparent {
+  @extend %button--transparent;
+}
+
+//responsive share buttons 
+.block-responsive-share-buttons .share-inner-wrp li {
+  margin: 0 0 1px -110px;
+}
+
+//pager
+.pager {
+  padding: 15px 0;
+  background: $color-light-grey;
+  .pager__items {
+      padding: 0;
+  }
+}

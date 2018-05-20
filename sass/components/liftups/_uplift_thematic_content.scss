@@ -1,0 +1,39 @@
+// Automatic liftup.
+.paragraph--type--uplift-thematic-content {
+  padding: 10px 0;
+
+  .paragraph__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    color: white;
+    background: $color-blue;
+
+    @include below-small {
+      justify-content: center;
+    }
+
+    a {
+      color: white;
+    }
+  }
+
+  .field--name-field-title {
+    font-weight: bold;
+    font-size: 24px;
+  }
+
+  .field--name-field-liftup-links {
+    display: flex;
+
+    @include below-small {
+      display: none;
+    }
+
+    a {
+      @extend %button--transparent;
+      margin-left: 20px;
+    }
+  }
+}

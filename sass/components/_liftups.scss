@@ -1,0 +1,434 @@
+//liftup
+.field--name-field-liftup {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  .field--name-node-post-date {
+    padding-top: 10px;
+  }
+}
+
+.liftup {
+  padding: 20px;
+  .liftup__term {
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 14px;
+  }
+}
+
+.field--name-field-liftup-style {
+  display: none;
+}
+
+.paragraph--type--uplift-centalised, .paragraph--type--uplift-decentalised {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.node--type-manual-centralized-liftup,
+.node--type-manual-decentralize-liftup {
+  .field--name-name {
+    display: none;
+  }
+  img {
+    display: block;
+  }
+}
+
+.view-thematic-lift-up {
+  h3 {
+    font-size: 20px;
+  }
+  .views-row {
+    display: block;
+    @include breakpoint($sm) {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+  .views-col {
+    padding: 20px;
+    word-wrap: break-word;
+    width: 100% !important;
+    @include breakpoint($sm) {
+      width: 50% !important;
+      min-height: 175px;
+    }
+    @include breakpoint($md) {
+      width: 25% !important;
+      min-height: 175px;
+    }
+  }
+  @media screen and (max-width: 767px) {
+    .views-col:nth-child(2n+0) {
+      background: $color-grey;
+    }
+  }
+
+  @include only-small {
+    .views-col:nth-child(2),
+    .views-col:nth-child(3) {
+      background: $color-grey;
+    }
+  }
+
+  @include breakpoint($md) {
+    .views-row:nth-child(2n+1) {
+      .views-col:nth-child(2n+0) {
+        background: $color-grey;
+      }
+    }
+    .views-row:nth-child(2n+0) {
+      .views-col:nth-child(2n+1) {
+        background: $color-grey;
+      }
+    }
+  }
+  .views-field {
+    text-align: left;
+  }
+  .views-field-field-content-source {
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 15px;
+  }
+}
+
+// manual liftup -- image on the side
+.manual-liftup-left,
+.manual-liftup-right {
+   * {
+    color: white;
+  }
+  .manual-liftup {
+    background: $color-blue;
+    display: flex;
+    flex-direction: column;
+    @include breakpoint($sm) {
+      flex-direction: row;
+    }
+  }
+  .manual-liftup__image,
+  .manual-liftup__info {
+    @include breakpoint($sm) {
+      width: 50%;
+      flex: 1 0 auto;
+    }
+  }
+  .manual-liftup__info {
+    padding: 20px;
+    .field {
+      text-align: left;
+    }
+  }
+  .field--name-field-links {
+    .field__item:not(:first-child) {
+      margin-top: 10px;
+    }
+    a {
+      @extend .button--transparent;
+    }
+  }
+}
+
+//manual liftup -- image on the right side
+.manual-liftup-right {
+  .manual-liftup {
+    @include breakpoint($sm) {
+      flex-direction: row-reverse;
+    }
+  }
+}
+
+//manual liftup -- double (two items next to eachother)
+.field--name-field-lifted-blocks {
+  display: flex;
+  flex-direction: column;
+  @include breakpoint($sm) {
+    flex-direction: row;
+  }
+  > .field__item {
+    @include breakpoint($sm) {
+      width: 50%;
+    }
+  }
+  .paragraph--type--uplift-centalised,
+  .paragraph--type--uplift-decentalised {
+    padding: 0;
+    @include breakpoint($sm) {
+      height: 100%;
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+  }
+  .field--name-field-lifted-content {
+    @include breakpoint($sm) {
+      height: 100%;
+    }
+  }
+  .field--name-body {
+    padding-bottom: $spacing-small-1;
+  }
+  .manual-liftup {
+    flex-direction: column;
+    height: 100%;
+    @include breakpoint($lg) {
+      flex-direction: row;
+    }
+  }
+  .manual-liftup__image {
+    * {
+      @include breakpoint($lg) {
+        height: 100%;
+      }
+    }
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+  .manual-liftup__image,
+  .manual-liftup__info {
+    @include breakpoint($sm) {
+      width: 100% !important;
+    }
+    @include breakpoint($lg) {
+      width: 50% !important;
+    }
+  }
+  h2 {
+    margin-top: 0;
+  }
+  .field__item:nth-child(1) {
+    .manual-liftup {
+      background: $color-dark-blue;
+    }
+  }
+  .field__item:nth-child(2) {
+    .manual-liftup {
+      background: $color-dark-green;
+    }
+  }
+}
+
+//manual liftup -- quadruple (four items next to eachother)
+.paragraph--type--quadruple-liftup {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.field--name-field-lifted-blocks-four {
+  display: flex;
+  color: white;
+  flex-direction: column;
+  flex-wrap: wrap;
+
+  @include breakpoint($sm) {
+    flex-direction: row;
+  }
+
+  > .field__item {
+    padding: 20px;
+    min-height: 175px;
+
+    // Fix: field item content is wider than containing div in IE10.
+    *:not(a) {
+      width: 100%;
+    }
+
+    @include breakpoint($sm) {
+      width: 50%;
+    }
+
+    @include breakpoint($md) {
+      width: 25%;
+    }
+
+    &:nth-child(1) {
+      background: $color-cyan;
+    }
+
+    &:nth-child(2) {
+      background: $color-dark-blue;
+    }
+
+    &:nth-child(3) {
+      background: $color-dark-green;
+    }
+
+    &:nth-child(4) {
+      background: $color-blue;
+    }
+  }
+
+  .field--name-node-title {
+    text-align: left;
+    padding-bottom: $spacing-small-1;
+    h2 {
+      margin: 0;
+    }
+  }
+
+  .field--name-body {
+    padding-bottom: $spacing-small-1;
+  }
+
+  .wrap--narrow {
+    padding: 0;
+    margin: 0;
+  }
+  .field--name-field-links a,
+  .field--name-field-link a,
+  .field--name-node-link a {
+    @extend .button--transparent;
+    margin-top: auto;
+  }
+  //flex beast for aligning button to the bottom
+  > div {
+    display: flex;
+    > div {
+      display: flex;
+      > div {
+        display: flex;
+        > div {
+          display: flex;
+          flex-direction: column;
+        }
+      }
+    }
+  }
+  .field--name-field-links,
+  .field--name-field-link {
+    margin-top: auto;
+  }
+
+}
+
+//manual liftup -- basic centered
+.manual-liftup-center {
+  max-width: $width-narrow;
+  margin: 0 auto;
+  padding: 10px 15px;
+  p {
+    padding: 0 15px;
+  }
+  img {
+    margin-bottom: 20px;
+  }
+  .field--name-node-title,
+  .field--name-body {
+    text-align: center;
+  }
+  .field--name-field-links {
+    text-align: center;
+    a {
+      @extend .button--blue;
+    }
+  }
+}
+
+// Publication liftups
+
+.paragraph--type--publication {
+  margin-bottom: $spacing-large-1;
+  .node--view-mode-centred-liftup {
+    max-width: $width-narrow;
+    margin: 0 auto;
+    padding: 10px 15px;
+    p {
+      padding: 0 15px;
+    }
+    img {
+      margin-bottom: 20px;
+    }
+    .field--name-node-title,
+    .field--name-body {
+      text-align: center;
+    }
+    .field--name-field-url,
+    .file--mime-application-pdf {
+      text-align: center;
+      a {
+        @extend .button--blue;
+      }
+    }
+  }
+}
+
+.node--view-mode-lateral-image-left,
+.node--view-mode-lateral-image-right {
+   * {
+    color: white;
+  }
+  .publication-liftup--container {
+    background: $color-dark-blue;
+    display: flex;
+    flex-direction: column;
+    @include breakpoint($sm) {
+      flex-direction: row;
+    }
+  }
+  .publication-liftup__image,
+  .publication-liftup__info {
+    @include breakpoint($sm) {
+      width: 50%;
+      flex: 1 0 auto;
+    }
+  }
+  .publication-liftup__image {
+    background: #fff;
+    text-align: center;
+    padding: $spacing-small-1;
+  }
+  .publication-liftup__info {
+    padding: 20px;
+    .field {
+      text-align: left;
+    }
+  }
+  .publication-liftup__info--price {
+    float: left;
+    margin-right: 20px;
+  }
+
+  .publication-liftup__info--links {}
+
+  .field--name-field-url,
+  .file--mime-application-pdf {
+    a {
+      @extend .button--transparent;
+    }
+  }
+
+}
+
+.node--view-mode-lateral-image-right {
+  .publication-liftup--container {
+    @include breakpoint($sm) {
+      flex-direction: row-reverse;
+    }
+  }
+}
+
+.node--view-mode-centred-liftup {
+  max-width: $width-narrow;
+  margin: 0 auto;
+  padding: 10px 15px;
+  p {
+    padding: 0 15px;
+  }
+  img {
+    margin-bottom: 20px;
+  }
+  .field--name-node-title,
+  .field--name-body {
+    text-align: center;
+  }
+  .field--name-field-url,
+  .file--mime-application-pdf {
+    text-align: center;
+    a {
+      @extend .button--blue;
+    }
+  }
+}

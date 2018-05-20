@@ -1,0 +1,77 @@
+//attachments
+.media-file {
+  position: relative;
+  background-image: url(#{$assets-folder}/generic_attachment.svg);
+  //height: 60px;
+  width: 100%;
+  background-size: 60px 60px;
+  background-repeat: no-repeat;
+  margin-left: -6px;
+  min-height: 60px;
+  &:hover, &:focus {
+    background-color: $color-light-grey;
+  }
+  .field--name-name {
+    color: $color-blue;
+    margin-left: 65px;
+    display: inline-block;
+    font-weight: bold;
+    //position: absolute;
+    //left: 60px;
+    //bottom: 5px;
+  }
+  .field--name-field-file {
+    margin-left: 65px;
+    width: 100%;
+  }
+}
+
+.field-group-link--file {
+  display: block;
+  min-height: 60px;
+  &:hover, &:focus {
+    color: $color-blue;
+  }
+}
+
+.field--name-field-attachments {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  a {
+    //font-weight: bold;
+    
+  }
+  .field__label {
+    color: $color-black;
+    margin-bottom: 30px;
+    font-size: 22px;
+  }
+  .field--name-created {
+    //margin-left: 60px;
+  }
+  > .field__items > .field__item {
+    margin-bottom: 15px;
+  }
+  .file {
+    padding-left: 0;
+    //margin-left: -9px;
+    background-image: none;
+    position: relative;
+    //width: 100%;
+    a {
+      //position: absolute;
+      //top: 0;
+      //left: 69px;
+    }
+  }
+
+  .file:before {
+    //content: "tööt";
+    //background-image: url(#{$assets-folder}/pdf.svg);
+    //height: 60px;
+    //width: 60px;
+    //background-size: 60px 60px;
+    //display: block;
+    //font-size: 0;
+  }
+}

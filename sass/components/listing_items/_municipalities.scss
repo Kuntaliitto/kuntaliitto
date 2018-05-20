@@ -1,0 +1,10 @@
+.listing-item.listing-item--municipalities {
+  .listing-item__content {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .listing-item__main {
+    width: 6rem;
+  }
+}

@@ -1,0 +1,132 @@
+.views-exposed-form {
+  padding: $spacing-large-2 $base-spacing $base-spacing;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-end;
+
+  // Form items wrapped by Views EF Fieldset.
+  .details-wrapper,
+  .views-ef-fieldset-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-end;
+    flex-grow: 1;
+
+    @include below-small {
+      width: 100%;
+    }
+
+    .form-item {
+      margin-right: $spacing-small-2;
+    }
+
+    .form-submit {
+      @include below-small {
+        margin-right: auto;
+        margin-left: 0;
+      }
+    }
+  }
+
+  .form-item {
+    width: auto;
+    margin: $base-spacing 0 0;
+  }
+
+  .form-item-s {
+    @include below-small {
+      flex-grow: 1;
+    }
+  }
+
+  .form-item-name {
+    margin-top: 0;
+
+    input {
+      min-width: 0;
+      margin-top: 0;
+    }
+  }
+
+  .form-type-checkbox {
+    display: flex;
+    margin-bottom: $spacing-small-2;
+
+    label {
+      &:after {
+        content: none;
+      }
+    }
+
+    input {
+      height: auto;
+      margin-top: 0;
+    }
+  }
+
+  .form-actions {
+    margin-top: $base-spacing;
+  }
+
+  label {
+    display: block;
+    margin: 0;
+    font-weight: normal;
+    font-size: $font-size-small-1;
+
+    &:after {
+      content: ":";
+    }
+  }
+
+  select,
+  input {
+    height: 40px;
+    margin: $spacing-small-2 $spacing-small-2 0 0;
+  }
+
+  select {
+    width: 100%;
+    border: none;
+
+    @include small {
+      width: 180px;
+    }
+  }
+
+  input {
+    font-size: $font-size-small-1;
+
+    &:not(.form-submit) {
+      border: 1px solid $color-light-grey-2;
+      border-radius: 3px;
+      color: grey;
+    }
+
+    &[name="s"] {
+      font-size: $font-size-larger-1;
+      width: 100%;
+
+      @include small {
+        width: 380px;
+      }
+    }
+
+    &.form-date {
+      width: 180px;
+    }
+
+    &.form-submit {
+      @include below-medium {
+        flex-wrap: wrap;
+      }
+    }
+  }
+
+  // Contacts filters.
+  #edit-field-service-in-swedish-value--wrapper {
+    order: 4;
+  }
+}

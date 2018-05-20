@@ -1,0 +1,121 @@
+.node--type-contact-information {
+  h2 {
+    display: none;
+  }
+}
+
+//contact directory
+
+//items
+.contact-directory-item-wrapper {
+  padding: 10px 0;
+  &:first-child {
+    padding: 20px 0 10px 0;
+  }
+  &:last-child {
+    padding: 10px 0 20px 0;
+  }
+}
+.contact-directory-item {
+  background: white;
+  padding: 20px;
+  overflow: auto;
+  img {
+    border-radius: 50%;
+    width: 130px;
+    height: 130px;
+  }
+  .views-field-field-first-name,
+  .views-field-field-last-name {
+    font-weight: bold;
+    margin: 0;
+  }
+  .views-field-field-first-name{
+    @include breakpoint($sm) {
+      margin-left: 40px;
+    }
+  }
+  .views-field-field-contact-email {
+    padding: 10px 0;
+  }
+  .views-label {
+    font-weight: bold;
+  }
+  .views-field-field-person-title {
+    margin-left: 15px;
+  }
+}
+
+.contact-directory-item--services {
+  @include breakpoint($sm) {
+    .views-field-field-image {
+      float: left;
+    }
+    .views-field-field-contact-email,
+    .views-field-field-service-description,
+    .views-field-field-responsibilities {
+      margin-left: 170px;
+    }
+  }
+}
+
+.contact-directory-item__left {
+  width: 100%;
+  @include breakpoint($sm) {
+    width: 20%;
+  }
+}
+
+.contact-directory-item__right {
+  width: 100%;
+  @include breakpoint($sm) {
+    width: 80%;
+  }
+  .label {
+    display: block;
+  }
+}
+
+.contact-directory-item__info {
+  p {
+    margin: 0;
+  }
+  display: flex;
+  margin-top: 20px;
+  flex-direction: column;
+  @include breakpoint($sm) {
+    flex-direction: row;
+  }
+}
+
+.contact-directory-item__right__top {
+  margin-top: 10px;
+  @include breakpoint($sm) {
+    margin-top: 0;
+  }
+}
+
+.contact-directory-item__right__left,
+.contact-directory-item__right__right {
+  @include breakpoint($sm) {
+    width: 50%;
+  }
+  div {
+    margin-bottom: 20px;
+  }
+  .contact-directory-item__division,
+  .contact-directory-item__organization,
+  .contact-directory-item__department {
+    margin: 0;
+  }
+}
+
+.contact-directory-item__name {
+  font-weight: bold;
+}
+
+.contact-directory-item__title {
+  margin-left: 2px;
+  text-transform: lowercase;
+}
+

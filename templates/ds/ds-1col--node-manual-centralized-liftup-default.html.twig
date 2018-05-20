@@ -1,0 +1,26 @@
+{#
+/**
+ * @file
+ * Display Suite 1 column template.
+ *
+ * Available variables:
+ * - ds_content_wrapper: wrapper around content
+ * - attributes: content region attributes
+ * - ds_content: content region
+ */
+#}
+<{{ ds_content_wrapper }}{{ attributes.addClass('ds-1col', 'clearfix', 'manual-liftup') }}>
+
+  {{ title_suffix.contextual_links }}
+
+  {% set field_main_media = ds_content.field_main_media|render %}
+  {% if field_main_media %}
+    <div class="manual-liftup__image">
+      {{ ds_content.field_main_media }}
+    </div>
+  {% endif %}
+  <div class="manual-liftup__info">
+    {{ ds_content|without('field_main_media') }}
+  </div>
+
+</{{ ds_content_wrapper }}>

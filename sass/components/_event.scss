@@ -1,0 +1,74 @@
+//blue url button
+.field--name-field-event-url {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  a {
+    @extend .button--blue;
+    padding: 10px;
+  }
+}
+
+//event information box
+.fieldgroup--event-information {
+  background: $color-grey;
+  padding: 20px 0;
+  .field__label {
+    font-weight: bold;
+  }
+  .fieldgroup {
+    margin: 0 auto;
+    padding: 0 15px;
+    max-width: 790px;
+  }
+  .fieldgroup__items {
+    border-left: 8px solid #00a6d6;
+    padding-left: 20px;
+    > .field {
+      margin: 2px 0;
+      padding: 0;
+    }
+  }
+  h3 {
+    margin-bottom: 20px;
+  }
+}
+
+.field--name-field-target-group {
+  overflow: auto;
+}
+
+#edit-field-service-in-swedish-value--wrapper {
+  margin: 0;
+}
+
+.node--type-event.node--view-mode-teaser {
+  > .field {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+  }
+  .field--name-node-title {
+    text-align: left;
+  }
+  .field--type-datetime,
+  .field--name-field-venue-name,
+  .field--name-field-event-city {
+    display: inline;
+    font-weight: bold;
+    .datetime {
+      font-weight: bold;
+    }
+  }
+  .field--type-datetime .datetime,
+  .field--name-field-venue-name {
+    &:after {
+      content: ",";
+    }
+  }
+  .field--name-field-keywords .field__item {
+    display: block;
+    @include breakpoint($sm) {
+      display: inline-block;
+    }
+  }
+}

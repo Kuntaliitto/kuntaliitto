@@ -1,0 +1,40 @@
+.audiofield {
+  .audiofield-audiojs-frame {
+    li {
+      margin-left: 20px;
+    }
+  }
+  .audiofield-audiojs {
+    width: 100%;
+    background: #1462A8;
+    .scrubberZ {
+      width: 70%;
+      background: #002E63;
+    }
+    .loadedZ {
+      background: #00A6D6;
+    }
+    .timeZ {
+      float: right;
+      min-width: 83px;
+    }
+  }
+}
+
+.embedded-entity {
+  .node--type-podcasts {
+    .field--name-node-title {
+      h2 {
+        text-align: left;
+      }
+    }
+    .field--name-field-description {
+      p:first-child {
+        margin-top: 0;
+      }
+    }
+    .field--name-field-podcast-file {
+      margin-bottom: 1em;
+    }
+  }
+}

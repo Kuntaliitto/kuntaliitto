@@ -1,0 +1,257 @@
+// Global Main menu.
+.menu--main {
+  font-size: $base-font-size;
+}
+
+// Main menu.
+.menu--main-menu {
+  position: relative;
+
+  @include below-medium {
+    background: $color-blue-3;;
+  }
+
+  @include medium {
+    display: flex;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+
+  a {
+    // Prevent line wrapping.
+    max-width: calc(100% - 4.8rem);
+    padding: 1rem $base-spacing;
+
+    @include medium {
+      max-width: none;
+      padding: 0.75rem 1.5rem;
+    }
+
+    &:hover,
+    &:focus {
+      color: white;
+    }
+  }
+
+  .icon-plus {
+    height: 4.8rem;
+    width: 4.8rem;
+    margin: 0 0 auto auto;
+
+    &.is-active {
+      // Convert plus icon to minus.
+      &:before {
+        background-image: url('../assets/minus.svg');
+      }
+    }
+  }
+
+  .menu-item {
+    display: flex;
+    align-content: flex-start;
+    line-height: 1.4em;
+
+    @include below-medium {
+      flex-wrap: wrap;
+    }
+
+    @include medium {
+      &:hover,
+      &:focus {
+        color: white;
+        background: $color-dark-blue;
+      }
+    }
+  }
+
+  // The topmost menu items.
+  .menu-item--top-level {
+    @include only-small {
+      padding: 0 $base-spacing;
+    }
+
+    &.menu-item--active-trail {
+      background: $color-dark-blue;
+
+    }
+
+    @include medium {
+      // Return to normal state after 0.5s delay.
+      transition: background 0.2s 0.5s;
+
+      &:hover,
+      &:focus {
+        // Display hover state after 0.2s delay.
+        transition-delay: 0.2s;
+
+        // Display sub-menus after 0.2s delay.
+        .menu__sub-menu--1 {
+          visibility: visible;
+          transition-delay: 0.2s;
+        }
+      }
+
+      > a {
+        // Two line height + padding.
+        min-height: calc(2.8em + 1.5rem);
+      }
+
+      > .icon-plus {
+        display: none;
+
+      }
+    }
+  }
+}
+
+// Main menu submenus.
+.menu__sub-menu {
+  position: relative;
+  display: none;
+  width: 100%;
+  margin-left: 0;
+  z-index: 1;
+
+  &[aria-expanded=true] {
+    display: block;
+  }
+
+  // The submenu is taken out of content flow. To have equal height
+  // submenus we fake the backgrounds.
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    z-index: -1;
+  }
+
+  @include medium {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    z-index: 3000;
+  }
+
+  a {
+    @include medium {
+      padding: 1.25rem $base-spacing;
+      font-size: $font-size-small-1;
+    }
+  }
+
+  .menu-item {
+    @include medium {
+      &.menu-item--active-trail,
+      &:hover,
+      &:focus {
+        background: $color-dark-blue-2;
+      }
+    }
+  }
+}
+
+.menu__sub-menu--1 {
+  @include below-medium {
+    overflow: hidden;
+  }
+
+  @include medium {
+    width: calc(100% / 3);
+    top: 100%;
+    left: 0;
+    display: block;
+    visibility: hidden;
+    transition: visibility 0s 0.5s;
+
+    // On mobile the aria attribute is used to open the submenu but
+    // on desktop hover state is used instead.
+    &[aria-expanded=true] {
+      visibility: hidden;
+    }
+
+    //&:hover,
+    //&:focus {
+    //  visibility: visible;
+    //  transition-delay: 0.2s;
+    //}
+  }
+
+  // The submenu is taken out of content flow. To have equall height
+  // submenus we fake the backgrounds.
+  &:after {
+    width: 300%;
+    background: $color-dark-blue;
+
+    @include below-medium {
+      left: -100%;
+    }
+
+    @include medium {
+      box-shadow: 0 6px 8px -2px rgba(0,0,0,.5);
+    }
+  }
+
+  .menu-item {
+    @include medium {
+      &.menu-item--active-trail,
+      &:hover,
+      &:focus {
+        background: $color-dark-blue-3;
+      }
+    }
+  }
+
+  // Use the same background color as the next sub-menu background.
+  .icon-plus {
+    &.is-active {
+      background: $color-blue-4;
+    }
+  }
+}
+
+//
+.menu__sub-menu.menu__sub-menu--2 {
+  background: $color-blue-4;
+
+  // The submenu is taken out of content flow. To have equall height
+  // submenus we fake the backgrounds.
+  &:after {
+    width: 200%;
+    background: $color-blue-4;
+
+    @include below-medium {
+      left: -50%;
+    }
+  }
+
+  // Use the same background color as the next sub-menu background.
+  .icon-plus {
+    &.is-active {
+      background: $color-darker-blue;
+    }
+  }
+}
+
+.menu__sub-menu.menu__sub-menu--3 {
+  // Fake background.
+  &:after {
+    width: 100%;
+    background: $color-darker-blue;
+
+    @include below-medium {
+      width: 200%;
+      left: -50%;
+    }
+  }
+
+  // Hide menu items that are nested deeper than 4 levels.
+  .icon-plus,
+  .menu__sub-menu {
+    display: none;
+  }
+}

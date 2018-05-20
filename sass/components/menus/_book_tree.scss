@@ -1,0 +1,75 @@
+.menu.menu--book-tree {
+  background: $color-blue;
+
+  > li > a {
+    // Prevent page reloads when users try to expand the menu but miss the icon.
+    width: auto;
+    display: inline-block;
+    font-size: $font-size-larger-1;
+
+    &:hover,
+    &:active {
+      color: $color-hover-grey;
+      background: $color-blue;
+    }
+  }
+
+  .menu--sub-menu {
+    display: none;
+    width: 100%;
+    background: $color-dark-blue;
+
+    &[aria-expanded="true"] {
+      display: block;
+    }
+
+    // Second level sub-menu.
+    .menu--sub-menu {
+      background: $color-blue-4;
+
+      // Third level sub-menu.
+      .menu--sub-menu {
+        padding-left: $base-spacing;
+      }
+    }
+
+    .icon-plus {
+      &.is-active {
+        background: $color-blue-4;
+      }
+    }
+  }
+
+  .menu-item {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    line-height: 1.4em;
+  }
+
+  .icon-plus {
+    height: 4.8rem;
+    width: 4.8rem;
+    margin: 0 0 auto auto;
+
+    &.is-active {
+      // Convert plus icon to minus.
+      &:before {
+        background-image: url('../assets/minus.svg');
+      }
+    }
+  }
+
+  a {
+    // Subtract icon size form width.
+    width: calc(100% - 4.8rem);
+    padding: 1.25rem $base-spacing;
+    font-size: $font-size-small-1;
+    color: white;
+
+    &:hover,
+    &:active {
+      background: $color-dark-blue-3;
+    }
+  }
+}

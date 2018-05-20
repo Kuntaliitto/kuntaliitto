@@ -1,0 +1,67 @@
+// colors
+$color-black: #383838;
+$color-blue: #426BBA;
+$color-blue-2: #5a6c94;
+$color-blue-3: #1462A8;
+$color-blue-4: #133F72;
+
+$color-light-blue: #A1ADC7;
+
+$color-darker-blue: #1c4787;
+$color-dark-blue: #002E63;
+$color-dark-blue-2: #032245;
+$color-dark-blue-3: #011730;
+$color-dark-blue--light: #576b7f; //for hover purposes
+
+$color-cyan: #00A6D6;
+$color-cyan--light: #69cce8; //for hover purposes
+
+$color-brown-light: #b08e71;
+
+$color-grey: #ebebeb;
+$color-light-grey: #f7f7f7;
+$color-light-grey-2: #c0c0c0;
+$color-hover-grey: #c7c7c7; //global hover color for links
+
+$color-dark-green: #6B8F00;
+
+$color-yellow: #E0AD12;
+
+//layout variables 
+$width-wide: 1200px;
+$width-medium: 1000px;
+$width-narrow: 790px;
+
+//breakpoints, mixins are declared in the mixins file
+$sm: 768px;
+$md: 1025px;
+$lg: 1200px;
+
+//path to assets
+$assets-folder: '../assets';
+
+// Typography.
+$base-font-family: 'Roboto', sans-serif;
+$base-line-height: 1.4;
+$base-color: $color-black;
+
+$base-font-size: 1.6rem;
+$font-size-small-1: 1.5rem;
+$font-size-small-2: 1.4rem;
+$font-size-larger-1: 1.8rem;
+$font-size-larger-2: 2rem;
+$font-size-larger-3: 2.4rem;
+
+// Spacings.
+$base-spacing: 2rem;
+$spacing-small-1: $base-spacing * 0.75;
+$spacing-small-2: $base-spacing / 2;
+$spacing-large-1: $base-spacing * 1.25;
+$spacing-large-2: $base-spacing * 2;
+
+// Fixed sized elements.
+$header-height-on-sm: 51px;
+$header-height-on-md: 120px;
+
+$container-width: 1200px;
+$container-padding: 15px;

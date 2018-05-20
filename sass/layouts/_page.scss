@@ -1,0 +1,60 @@
+// Basic container with padding on mobile.
+.wrap {
+  @include below-small {
+    padding-right: $container-padding;
+    padding-left: $container-padding
+  }
+}
+
+// Deprecated: do not use. Layout is set for whole main element.
+.wrap--mobile {}
+
+// Narrow container.
+.wrap--narrow--mobile {
+  max-width: $width-narrow;
+  margin: 0 auto;
+}
+
+// .wrap--narrow--mobile but with side paddings on mobile
+.wrap--narrow {
+  @extend .wrap--narrow--mobile;
+
+  @include below-small {
+    padding-right: $container-padding;
+    padding-left: $container-padding;
+  }
+}
+
+//flex row
+.flex-row {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  @include breakpoint($sm) {
+    flex-direction: row;
+  }
+}
+
+main {
+  // Needed for IE.
+  display: block;
+  max-width: $container-width;
+  margin-top: $header-height-on-sm;
+  margin-left: auto;
+  margin-right: auto;
+
+  // Containers that need padding on all viewport widths should
+  // use .wrap.
+  @include small {
+    padding-right: $container-padding;
+    padding-left: $container-padding;
+  }
+
+  @include medium {
+    margin-top: $header-height-on-md;
+  }
+}
+
+.layout-container {
+  overflow: hidden;
+}

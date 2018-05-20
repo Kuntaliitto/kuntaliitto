@@ -1,0 +1,5 @@
+{
+  "browsersync": {
+    "proxy": "https://local.kuntaliitto.fi/"
+  }
+}

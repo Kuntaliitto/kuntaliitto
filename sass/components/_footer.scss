@@ -1,0 +1,124 @@
+//footer and its components
+
+//footer 
+.footer {
+  padding: 15px 0 40px;
+  background: $color-dark-blue;
+  font-size: 13px;
+  * {
+    color: white;
+  }
+}
+
+.region-footer {
+  padding: 0 $container-padding;
+}
+
+//contact us block
+#block-contactus {
+  h2 {
+    text-transform: uppercase;
+    font-size: 18px;
+    @include breakpoint($sm) {
+      font-size: 22px;
+    }
+  }
+  a {
+    font-size: 16px;
+    line-height: 1.8;
+    @include breakpoint($sm) {
+      font-size: 17px;
+      line-height: normal;
+    }
+  }
+  border-bottom: 1px solid grey;
+  padding-bottom: 20px;
+  .field--name-field-contact-us-link-1 a {
+    position: relative;
+    &:before {
+      background: url('../images/email-envelope-outline.png');
+    }
+  }
+}
+
+//contact information block
+#block-contactinformation {
+  a {
+    line-height: 1.8;
+  }
+  @include breakpoint($sm) {
+    float: left;
+  }
+  h2 {
+    font-size: 18px;
+    @include breakpoint($sm) {
+      font-size: 20px;
+    }
+  }
+}
+
+//social media block
+#block-socialmediablock {
+  @include breakpoint($sm) {
+    float: right;
+  }
+  > a {
+    margin-top: 60px;
+    text-indent:-9999px;
+    float: left;
+    margin-right: 30px;
+    background-size: 35px 35px;
+    height: 35px;
+    width: 35px;
+    @include breakpoint($md) {
+      background-size: 55px 55px;
+      height: 55px;
+      width: 55px;
+      margin-top: 50px;
+    }
+  }
+}
+
+//concern webpages block
+#block-concernwebpages {
+  display: none;
+  border-top: 1px solid grey;
+  padding-top: 20px;
+  clear: both;
+  h2 {
+    font-size: 16px;
+  }
+  a {
+    line-height: 1.8;
+  }
+  @include breakpoint($sm) {
+    display: block;
+  }
+
+  .field {
+    vertical-align: top;
+  }
+}
+
+#block-concernwebpages, #block-contactus, #block-contactinformation {
+  .field {
+    margin-right: 70px;
+    @include breakpoint($sm) {
+      display: inline-block;
+    }
+  }
+}
+
+//social media icons
+.facebook-icon {
+  background: url(#{$assets-folder}/facebook.svg);
+}
+.twitter-icon {
+  background: url(#{$assets-folder}/twitter.svg);
+}
+.youtube-icon {
+  background: url(#{$assets-folder}/youtube.svg);
+}
+.linkedin-icon {
+  background: url(#{$assets-folder}/linkedin.svg);
+}

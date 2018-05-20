@@ -1,0 +1,25 @@
+//date
+.field--type-datetime, .field--name-node-changed-date {
+  > * {
+    display: inline-block;
+  }
+  .field__label {
+    float: none;
+  }
+  * {
+    font-weight: normal;
+  }
+}
+
+.views-field-created {
+  font-size: 14px;
+}
+
+.field--name-field-last-modified,
+.field--name-node-changed-date,
+.field--name-node-post-date {
+  padding-top: 30px;
+  padding-bottom: 10px;
+  text-align: center;
+  font-size: 15px;
+}

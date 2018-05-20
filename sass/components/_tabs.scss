@@ -1,0 +1,16 @@
+//the drupal tabs
+.block-local-tasks-block {
+  border-bottom: 1px solid $color-grey;
+}
+
+.tabs {
+  text-align: center;
+  a {
+    color: $color-blue;
+    font-weight: bold;
+  }
+  a.is-active {
+    background: none;
+    border-bottom: 7px solid $color-blue;
+  }
+}

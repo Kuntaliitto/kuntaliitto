@@ -1,0 +1,320 @@
+<?php
+
+use Drupal\Core\Render\Element;
+use Drupal\Core\Link;
+use Drupal\Core\Url;
+use Drupal\node\Entity\Node;
+use Drupal\image\Plugin\Field\FieldType\ImageItem;
+
+/**
+ * Implements template_prprocess_HOOK() for paragraph--uplift-centalised.html.twig.
+ */
+function kuntaliitto_preprocess_paragraph__uplift_centalised(&$variables) {
+  $view_mode = NULL;
+
+  switch ($variables['content']['field_liftup_style'][0]['#markup']) {
+    case 'centred-liftup':
+      $view_mode = 'centralized';
+      break;
+
+    case 'no-image':
+      $view_mode = 'teaser';
+      break;
+  }
+
+  if ($view_mode) {
+    foreach (Element::children($variables['content']['field_lifted_content']) as $key) {
+      $variables['content']['field_lifted_content'][$key]['#view_mode'] = $view_mode;
+      if (!in_array($view_mode, $variables['content']['field_lifted_content'][$key]['#cache']['keys'])) {
+        $variables['content']['field_lifted_content'][$key]['#cache']['keys'][] = $view_mode;
+      }
+    }
+  }
+}
+
+/**
+ * Implements template_preprocess_HOOK() for listing-item.html.twig.
+ */
+function kuntaliitto_preprocess_listing_item(&$variables) {
+  /** @var \Drupal\node\Entity\Node $node */
+  if (!empty($variables['content']['#node'])) {
+    $node = $variables['content']['#node'];
+    if ($node->bundle() == 'external_article' && $node->field_link->uri) {
+      $attributes = [
+        'class' => 'outbound-link',
+        'hreflang' => $node->language()->getId(),
+        'target' => '_blank',
+        'rel' => 'noopener',
+      ];
+      $link = Link::fromTextAndUrl($node->getTitle(), Url::fromUri($node->field_link->uri, ['attributes' => $attributes]));
+      $variables['content']['title']['node_title'][0][0]['#template'] = $link->toString();
+    }
+  }
+}
+
+/**
+ * Implements template_prprocess_HOOK() for paragraph--uplift-decentalised.html.twig.
+ */
+function kuntaliitto_preprocess_paragraph__uplift_decentalised(&$variables) {
+  // Preprocessing is the same as for paragraph--uplift-centalised.htm.twig.
+  kuntaliitto_preprocess_paragraph__uplift_centalised($variables);
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter() for node.html.twig.
+ */
+function kuntaliitto_theme_suggestions_node_alter(array &$suggestions, array $variables) {
+  $node = $variables['elements']['#node'];
+  $view_mode = $variables['elements']['#view_mode'];
+  if ($node->getType() == 'export_content_book_page' && $view_mode == 'full') {
+    $suggestions[] = 'node__book__full';
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter() for field.html.twig.
+ */
+function kuntaliitto_theme_suggestions_field_alter(array &$suggestions, array $variables) {
+  if (!empty($variables['element']['#ds_view_mode'])) {
+    $suggestions[] = 'field__' . $variables['element']['#ds_view_mode'] . '__' . $variables['element']['#entity_type'] . '__' . $variables['element']['#bundle'];
+  }
+  else if (!empty($variables['element']['#view_mode'])) {
+    $suggestions[] = 'field__' . $variables['element']['#view_mode'] . '__' . $variables['element']['#entity_type'] . '__' . $variables['element']['#bundle'];
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter() for image_formatter.html.twig.
+ */
+function kuntaliitto_theme_suggestions_image_formatter_alter(array &$suggestions, array $variables) {
+  if (isset($variables['item']) && $variables['item'] instanceof ImageItem) {
+    /** @var ImageItem $imageitem */
+    $imageitem = $variables['item'];
+    $suggestions[] = 'image_formatter__' . $imageitem->getParent()->getName();
+  }
+  $entity = $variables['item']->getEntity();
+  $field_name = $variables['item']->getParent()->getName();
+  $suggestions[] = 'image_formatter__' . $entity->getEntityTypeId() . '__' . $entity->bundle() . '__' . $field_name;
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter() for file-link.html.twig.
+ */
+function kuntaliitto_theme_suggestions_file_link_alter(array &$suggestions, array $variables) {
+  if (\Drupal::routeMatch()->getRouteName() == 'entity.webform.canonical') {
+    $suggestions[] = 'file_link__webform';
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter() for a form.
+ */
+function kuntaliitto_theme_suggestions_form_alter(array &$suggestions, array $variables) {
+  // Form id based suggestion.
+  if (!empty($variables['element']['#form_id'])) {
+    $suggestions[] = 'form__' . $variables['element']['#form_id'];
+  }
+  // View based suggestions for exposed forms.
+  if (!empty($variables['element']['#view_id'])) {
+    foreach($suggestions as $suggestion) {
+      $suggestions[] = $suggestion . '__' . $variables['element']['#view_id'];
+    }
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter() for  a View.
+ */
+function kuntaliitto_theme_suggestions_views_view_alter(array &$suggestions, array $variables) {
+  $view = $variables['view'];
+  $style_plugin = $view->style_plugin->getPluginId() == 'default' ? 'unformatted' : $view->style_plugin->getPluginId();
+  $suggestions[] = 'views_view__' . $view->current_display;
+  $suggestions[] = 'views_view__' . $style_plugin . '__' . $view->current_display;
+}
+
+/**
+ * Implementes hook_preprocess_block().
+ */
+function kuntaliitto_preprocess_block(&$variables) {
+  $plugin_id = $variables['plugin_id'];
+  if ($plugin_id == 'book_navigation') {
+    _kuntaliitto_process_book_tree_links($variables['content']['#items']);
+  }
+
+  // Change site logo based on the current language.
+  if ($plugin_id == 'system_branding_block') {
+    $theme = drupal_get_path('theme', 'kuntaliitto');
+    $path = '/' . $theme;
+
+    $language = \Drupal::languageManager()->getCurrentLanguage()->getId();
+    $variables['#cache']['contexts'][] = 'languages';
+
+    switch ($language) {
+      case 'sv':
+        $logo = $path . '/logo_sv.svg';
+        $variables['content']['site_logo']['#uri'] = $logo;
+        $variables['site_logo'] = $logo;
+        break;
+      case 'en':
+        $logo = $path . '/logo_en.svg';
+        $variables['content']['site_logo']['#uri'] = $logo;
+        $variables['site_logo'] = $logo;
+        break;
+    }
+  }
+}
+
+function kuntaliitto_preprocess_paragraph__some(&$variables) {
+
+  $data=[];
+  $paragraph = $variables['paragraph'];
+
+  $count = 12;
+  if (isset($paragraph->field_nof->value))
+    $count = $paragraph->field_nof->value;
+  $data['count']=$count;
+  if (isset($paragraph->field_twitter->value))
+    $data['twitter'] = $paragraph->field_twitter->value;
+  else
+    $data['twitter']="";
+  if (isset($paragraph->field_instagram->value))
+    $data['instagram'] = $paragraph->field_instagram->value;
+  else
+    $data['instagram']="";
+  if (isset($paragraph->field_facebook->value))
+    $data['facebook'] = $paragraph->field_facebook->value;
+  else
+    $data['facebook']="";
+
+  $url = 'http://app.kunnat.net/social/generic.php';
+  $ch = curl_init($url);
+
+  curl_setopt($ch, CURLOPT_POST, 1);
+  curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+  $social = curl_exec($ch);
+  curl_close($ch);
+
+  $variables['some_wall'] = $social;
+}
+
+/**
+ * Implements template_preprocess_book_navigation().
+ */
+function kuntaliitto_preprocess_book_navigation(&$variables) {
+
+  $language = \Drupal::languageManager()->getCurrentLanguage()->getId();
+  $book_id = $variables['book_link']['bid'];
+  $book_manager = \Drupal::service('kuntaliitto_books.book.manager');
+  $fulltree = $book_manager->bookTreeAllData($book_id);
+  $vars['content'] = $book_manager->bookTreeOutput($fulltree);
+  $flat_tree = _kuntaliitto_book_flattern_tree($vars['content']['#items']);
+  _kuntaliitto_book_make_links($flat_tree);
+
+  if(isset($flat_tree[$variables['book_link']['nid']]['next']) && !is_null($flat_tree[$variables['book_link']['nid']]['next']) ) {
+    $options = ['absolute' => TRUE];
+    $url = \Drupal\Core\Url::fromRoute('entity.node.canonical', ['node' => $flat_tree[$variables['book_link']['nid']]['next']], $options);
+    $url = $url->toString();
+    $variables['next_url'] = $url;
+    $variables['next_title'] = Node::load($flat_tree[$variables['book_link']['nid']]['next'])
+      ->getTranslation($language)
+      ->getTitle();
+  } else {
+    unset($variables['next_url']);
+  }
+  if(isset($flat_tree[$variables['book_link']['nid']]['prev']) && !is_null($flat_tree[$variables['book_link']['nid']]['prev'])) {
+    if($variables['book_link']['nid'] != $variables['book_link']['bid']) {
+      $options = ['absolute' => TRUE];
+      $url = \Drupal\Core\Url::fromRoute('entity.node.canonical', ['node' => $flat_tree[$variables['book_link']['nid']]['prev']], $options);
+      $url = $url->toString();
+      $variables['prev_url'] = $url;
+      $variables['prev_title'] = Node::load($flat_tree[$variables['book_link']['nid']]['prev'])
+        ->getTranslation($language)
+        ->getTitle();
+    }
+  }
+}
+
+/**
+ * Implements template_preprocess_node()
+ *
+ * @param type $variables
+ */
+function kuntaliitto_preprocess_node(&$variables) {
+  $node = $variables['node'];
+  $view_mode = $variables['view_mode'];
+  $suggestions[] = 'node__' . $view_mode;
+  $suggestions[] = 'node__' . $node->bundle() . '__' . $view_mode;
+
+}
+
+/**
+ * Preprocess contact and book_page content types
+ *
+ * @param type $variables
+ */
+function kuntaliitto_preprocess_book_page(&$variables) {
+
+  $language = \Drupal::languageManager()->getCurrentLanguage()->getId();
+  // get the root node of current book
+  $bid = $variables['content']['#node']->book['bid'];
+  $book_root = \Drupal::entityTypeManager()
+    ->getStorage('node')
+    ->load($bid);
+
+  // Default classname
+  $bookClassName = 'lightskyblue';
+  $color = $book_root->get('field_color')->value;
+  if (!empty($color)) {
+    $bookClassName = $color;
+  }
+
+  $variables['book_navigation_class_name'] = $bookClassName;
+  $variables['attributes']['class'][] = $variables['book_navigation_class_name'];
+  $variables['node_title'] = $variables['content']['#node']->title->value;
+
+  // navigation tree
+  $block = \Drupal\block\Entity\Block::load('booknavigation');
+  $variables['book_tree'] = \Drupal::entityTypeManager()
+    ->getViewBuilder('block')
+    ->view($block);
+  $search_block = \Drupal\block\Entity\Block::load('views_block__book_search_book_search_block');
+  if ($search_block) {
+    $variables['book_search'] = \Drupal::entityTypeManager()
+      ->getViewBuilder('block')
+      ->view($search_block);
+  }
+}
+
+/**
+ * Recursive parses book tree
+ * @param $items
+ */
+function _kuntaliitto_process_book_tree_links(&$items) {
+  $node_storage = \Drupal::entityTypeManager()->getStorage('node');
+  foreach($items as &$item) {
+    $node = $node_storage->load($item['original_link']['nid']);
+    if($node->hasField('field_page_container')) {
+      $is_container = $node->get('field_page_container')->getValue();
+      if(!empty($is_container) && $is_container[0]['value'] == '1') {
+        $item['is_container'] = TRUE;
+      }
+      if(!empty($item['below'])) {
+        _kuntaliitto_process_book_tree_links($item['below']);
+      }
+    }
+  }
+}
+
+function kuntaliitto_preprocess_image_formatter(&$variables) {
+  $file = Drupal\file\Entity\File::load($variables['item']->target_id);
+  $variables['download_url'] = $file->downloadUrl(array('attributes' => array('type' => $file->getMimeType() . '; length=' . $file->getSize())));
+}
+
+function kuntaliitto_preprocess_field(&$variables) {
+  if($variables['field_name'] == 'field_twitter_account') {
+    $account = $variables['element']['0']['#context']['value'];
+    $variables['account_url'] = strtolower(substr($account, 1));
+  }
+}

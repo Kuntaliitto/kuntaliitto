@@ -1,0 +1,26 @@
+listing_item:
+  label: Listing Item
+  category: Kuntaliitto
+  class: '\Drupal\ds\Plugin\DsLayout'
+  template: layouts/listing-item
+  regions:
+    meta:
+      label: Meta
+    title:
+      label: Title
+    main:
+      label: Main
+    keywords:
+      label: Keywords
+book_page:
+  label: Book page
+  category: Kuntaliitto
+  class: '\Drupal\ds\Plugin\DsLayout'
+  template: layouts/book-page
+  regions:
+    header:
+      label: Header
+    main:
+      label: Main
+    footer:
+      label: Footer

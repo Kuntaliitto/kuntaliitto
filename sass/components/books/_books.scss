@@ -1,0 +1,78 @@
+.book {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+
+  @include below-small {
+    flex-direction: column;
+  }
+}
+
+.book__menu {
+  width: 100%;
+  max-width: $width-narrow;
+  margin: 0 auto $base-spacing;
+
+  @include medium {
+    width: 33%;
+    margin-right: $base-spacing;
+  }
+}
+
+.book__content-wrapper {
+  max-width: $width-narrow;
+  margin: 0 auto $base-spacing;
+
+  @include medium {
+    width: calc(67% - #{$base-spacing});
+  }
+}
+
+.book__header {
+  padding: $base-spacing;
+  color: white;
+  background: $color-blue-2;
+
+  .cyan & {
+    background: $color-cyan;
+  }
+
+  .green-dark & {
+    background: $color-dark-green;
+  }
+
+  .yellow & {
+    background: $color-yellow;
+  }
+
+  .brown-light & {
+    background: $color-brown-light;
+  }
+
+  .blue-light & {
+    background: $color-light-blue;
+  }
+
+  .blue-1 & {
+    background: $color-blue;
+  }
+
+  .blue-2 & {
+    background: $color-blue-2;
+  }
+}
+
+.book__main {
+  padding: 0 0 $base-spacing;
+
+  .field--name-field-main-media {
+    padding: 0;
+  }
+}
+
+.book__footer {
+  @include medium {
+    width: 100%;
+    margin: $spacing-large-1 auto;
+  }
+}

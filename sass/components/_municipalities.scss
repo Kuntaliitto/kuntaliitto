@@ -1,0 +1,93 @@
+//alphabetical list search
+.block-views-exposed-filter-blockmunicipalities-overview-page-municipality-overview {
+  background: $color-grey;
+}
+
+.municipalities-alphabetical, .view-content--municipality {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.municipalities-alphabetical__row {
+  display: flex;
+}
+
+.municipalities-alphabetical__alphabet {
+  padding: 10px 20px;
+  margin: 0;
+  display: none;
+  @include breakpoint($sm) {
+    display: block;
+  }
+}
+
+.municipalities-alphabetical__municipalities {
+  width: 100%;
+  .views-row {
+    display: flex;
+    flex-direction: column;
+    @include breakpoint($sm) {
+      flex-direction: row;
+      margin-bottom: 10px;
+    }
+  }
+  .views-col {
+    padding: 5px;
+    width: 100% !important;
+    @include breakpoint($sm) {
+      width: 33.3333333333% !important;
+      flex: 0 0 auto;
+      padding: 0 5px;
+    }
+  }
+  .views-col__inner {
+    background: white;
+    padding: 10px 20px;
+  }
+  a {
+    font-weight: bold;
+  }
+}
+
+//individual municipality
+.municipality__box {
+  @include breakpoint($sm) {
+    width: 33.3333333333%;
+  }
+  flex: 0 0 auto;
+  margin: 0;
+  padding: 5px;
+  a {
+    font-weight: bold;
+  }
+  h3 {
+    font-size: 1em;
+  }
+  p {
+    margin: 0;
+  }
+  .field__label {
+    font-weight: normal;
+    &:after {
+      content: ":";
+    }
+  }
+  .field {
+    margin-top: 20px;
+  }
+  .fieldgroup {
+    background: white;
+    padding: 20px;
+    height: 100%;
+  }
+}
+
+.municipality__logo {
+  img {
+    width: 120px;
+    height: auto;
+    @include breakpoint($sm) {
+      width: 50%;
+    }
+  }
+}

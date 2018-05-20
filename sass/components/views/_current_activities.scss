@@ -1,0 +1,71 @@
+.view--curent-activities {
+  // Container width - content padding.
+  max-width: calc(#{$container-width} - 30px);
+  display: flex;
+  align-items: center;
+  position: relative;
+  top: 0;
+  margin: 0 auto;
+  padding: $spacing-large-1 $base-spacing;
+  padding-left: calc(#{$base-spacing} + 2.75em);
+  font-size: $font-size-larger-2;
+  color: white;
+  background: black url("../assets/play-button.svg") $base-spacing center/2em no-repeat;
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 0s 1s, opacity 0.5s linear;
+
+  &.is-hidden {
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  .view-header {
+    order: 2;
+    align-self: flex-start;
+    margin-left: auto;
+    margin-right: 0;
+    padding-left: $spacing-small-1;
+  }
+
+  .view-content {
+    order: 1;
+  }
+
+  .views-row {
+    @include small {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  .views-field-field-activities-link {
+    margin-right: $spacing-large-1;
+    font-size: $font-size-larger-3;
+
+    a {
+      color: white;
+
+      &:hover,
+      &:focus {
+        color: $color-hover-grey;
+      }
+    }
+  }
+
+  input[type="submit"] {
+    width: 2em;
+    height: 2em;
+    overflow: hidden;
+    text-indent: 100vw;
+    padding: 0;
+    opacity: .75;
+    background: url("../assets/close.svg") center/contain no-repeat;
+
+    &:hover,
+    &:focus {
+      opacity: 1;
+    }
+  }
+}
+

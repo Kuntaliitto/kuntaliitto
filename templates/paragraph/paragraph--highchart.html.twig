@@ -1,0 +1,113 @@
+{% set rnd = random() %}
+<script>
+    var settings_{{ rnd }} = "{{ content.field_kk_settings[0] }}{{ content.field_json_settings[0] }}";
+    var vars_{{ rnd }}=[];
+    var vals_{{ rnd }}=[];
+    var arr_{{ rnd }} = {};
+    var lang_{{ rnd }}="fi";
+    var args_{{ rnd }} = settings_{{ rnd }}.split("&amp;");
+    for (var i=0; i<args_{{ rnd }}.length; i++) {
+        arg_{{ rnd }}=args_{{ rnd }}[i].split("=");
+        vars_{{ rnd }}[i]=arg_{{ rnd }}[0];
+        vals_{{ rnd }}[i]=arg_{{ rnd }}[1];
+        if (arg_{{ rnd }}[0]=="lang")
+          lang_{{ rnd }}=arg_{{ rnd }}[1];
+        arr_{{ rnd }}[arg_{{ rnd }}[0]]=arg_{{ rnd }}[1];
+    }
+    s=location.search;
+    if (s.length>0) {
+        s=s.substring(1);
+        var params=s.split("&");
+        for (i=0;i<params.length;i++) {
+            val = params[i].split("=");
+            arr[val[0]]=val[1];
+        }
+    }
+</script>
+<div class="kuntakuvaaja">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="/themes/custom/kuntaliitto/js/highcharts.js"></script>
+    <select name='m1' id='m1-{{ rnd }}'></select>
+    <script>
+        jQuery.get("https://apps.kuntaliitto.fi/json/getMuniSelectList.php",arr_{{ rnd }},function(data) {
+            jQuery("#m1-{{ rnd }}").html(data);
+        });
+        if (typeof arr_{{ rnd }}["m1"] === "undefined")
+            jQuery("#m1-{{ rnd }}").hide();
+    </script>
+    <select name='m2' id='m2-{{ rnd }}'></select>
+    <script>
+        jQuery.get("https://apps.kuntaliitto.fi/json/getMuniSelectList.php",arr_{{ rnd }},function(data) {
+            jQuery("#m2-{{ rnd }}").html(data);
+        });
+        if (typeof arr_{{ rnd }}["m2"] === "undefined")
+            jQuery("#m2-{{ rnd }}").hide();
+    </script>
+    <select name='y1' id='y1-{{ rnd }}'></select>
+
+    <script>
+      var text_{{ rnd }}="Piirrä";
+      if (lang_{{ rnd }}=="sv")
+        text_{{ rnd }}="Uppdatera";
+      document.write("<input type='button' name='butt' value='" + text_{{ rnd }} +"' onClick='reDraw_{{ rnd }}()'>");
+    </script>
+
+    <div id="container-{{ rnd }}" style="width:100%; height:600px;"></div>
+    <script>
+      if (typeof(arr_{{ rnd }}['height']) !== "undefined")
+        jQuery("#container-{{ rnd }}").css("height",arr_{{ rnd }}['height']);
+    </script>;
+    <script>
+        function reDraw_{{ rnd }}() {
+            for (key in arr_{{ rnd }})
+              if (key=="m1" || key=="m2" || key=="y1" || key=="y2" )
+                arr_{{ rnd }}[key]=jQuery('#' + key + '-{{ rnd }}').val();
+            jQuery.getJSON('{{ content.field_json[0] }}', arr_{{ rnd }})
+                .done(function(json) {
+                		if (json.fcg.formatter.indexOf("abs-y")!== -1) {
+                    	json.tooltip.formatter=function() {
+                    		return "<span style=\"color:" + this.color + "\">●</span> " + this.series.name + ": <b>" + Math.abs(this.y).toLocaleString() + "</b><br/>";;
+                    	};
+                    	json.yAxis.labels.formatter=function() {
+                    		return Math.abs(this.value).toLocaleString();
+                    	};
+                  	}
+                    myChart = Highcharts.chart('container-{{ rnd }}', json);
+
+                });
+        }
+        jQuery.getJSON( "{{ content.field_json[0] }}", arr_{{ rnd }} )
+            .done(function( json ) {
+                jQuery(function () {
+                    var map=json;
+                    console.log(map);
+                    arr2=arr_{{ rnd }};
+                    arr2['table_url']=map.fcg.table;
+                    console.log(arr2);
+                    jQuery.post("https://apps.kuntaliitto.fi/json/getYearSelectList_new.php",arr2,function(data) {
+                        jQuery("#y1-{{ rnd }}").html(data);
+                    });
+                    if (typeof arr_{{ rnd }}["y1"] === "undefined")
+                        jQuery("#y1-{{ rnd }}").hide();
+                    if (map.fcg.formatter.indexOf("abs-y")!== -1) {
+                    	map.tooltip.formatter=function() {
+                    		return "<span style=\"color:" + this.color + "\">●</span> " + this.series.name + ": <b>" + Math.abs(this.y).toLocaleString() + "</b><br/>";;
+                    	};
+
+                    	map.yAxis.labels.formatter=function() {
+                    		return Math.abs(this.value).toLocaleString();
+                    	};
+                  	}
+                    if (typeof(map.fcg.height) !== "undefined") {
+                      jQuery("#container-{{ rnd }}").css("height",map.fcg.height);
+                    }
+                    var myChart = Highcharts.chart('container-{{ rnd }}', map);
+                });
+            })
+            .fail(function( jqxhr, textStatus, error ) {
+                var err = textStatus + ", " + error;
+                console.log( "Request Failed: " + err );
+            });
+    </script>
+
+</div>

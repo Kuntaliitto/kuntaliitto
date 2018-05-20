@@ -1,0 +1,30 @@
+//listing view
+.listing-view {
+  //hide breadcrumbs here
+  .field--name-dynamic-block-fieldnode-breadcrumbs {
+    display: none;
+  }
+  .tabs .primary {
+    margin: 0;
+    a {
+      padding: 10px 20px;
+      color: $color-blue;
+      font-weight: bold;
+    }
+    li.is-active a {
+      background: $color-grey;
+      border-bottom: 7px solid $color-blue;
+      background: none;
+    }
+  }
+  .node--unpublished {
+    background: white;
+  }
+}
+
+.views-row--listing {
+  padding: 10px 0;
+  &:first-child {
+    padding: 20px 0 10px 0;
+  }
+}

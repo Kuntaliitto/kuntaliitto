@@ -1,0 +1,69 @@
+// Mixins
+// http://css-tricks.com/media-queries-sass-3-2-and-codekit/
+@mixin breakpoint($point) {
+  @if $point == $lg {
+    @media (min-width: $lg) { @content; }
+  }
+  @else if $point == $md {
+    @media (min-width: $md) { @content; }
+  }
+  @else if $point == $sm {
+    @media (min-width: $sm)  { @content; }
+  }
+}
+
+// The following mixins target viewports in a range from given breakpoint
+// to breakpoint.
+
+// Target viewports from $sm to $md.
+@mixin only-small() {
+  @media (min-width: $sm) and (max-width: #{$md - 1px}) { @content; }
+}
+
+// Target viewports from $md to $lg.
+@mixin only-medium() {
+  @media (min-width: $md) and (max-width: #{$lg - 1px}) { @content; }
+}
+
+// Target viewports from $lg to infinity.
+@mixin only-large() {
+  @media (min-width: $lg) { @content; }
+}
+
+
+// The following mixins target viewports from zero to given breakpoint.
+// The inverse behavior of mobile first.
+
+// Target viewports from 0 to $sm.
+@mixin below-small() {
+  @media (max-width: #{$sm - 1px}) { @content; }
+}
+
+// Target viewports from 0 to $md.
+@mixin below-medium() {
+  @media (max-width: #{$md - 1px}) { @content; }
+}
+
+// Target viewports from 0 to $lg.
+@mixin below-large() {
+  @media (max-width: #{$lg - 1px}) { @content; }
+}
+
+
+// The following mixins target viewports from a given breakpoint
+// to infinity.
+
+// Target viewports starting from $sm.
+@mixin small() {
+  @media (min-width: $sm) { @content; }
+}
+
+// Target viewports starting from $md.
+@mixin medium() {
+  @media (min-width: $md) { @content; }
+}
+
+// Target viewports starting from $lg.
+@mixin large() {
+  @media (min-width: $lg) { @content; }
+}

@@ -1,0 +1,41 @@
+.listing-item.listing-item--extended {
+  border-left: 7px solid $color-dark-blue;
+  @include small {
+    display: flex;
+  }
+
+  .field--name-field-content, .field--name-body {
+    font-weight: bold;
+  }
+}
+
+.listing-item__left {
+  @include breakpoint($sm) {
+    width: 70%;
+    flex-grow: 1;
+  }
+}
+
+.listing-item__right {
+  display: none;
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  @include breakpoint($sm) {
+    display: block;
+    width: 30%;
+  }
+}
+
+
+.listing-item__information {
+  h2, h3 {
+    margin-top: 0;
+    margin-bottom: 5px;
+  }
+}
+.listing-item__information__inner {
+  padding: 20px 10px 20px 20px;
+}

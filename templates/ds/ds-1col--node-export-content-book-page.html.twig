@@ -1,0 +1,27 @@
+{#
+/**
+ * @file
+ * Display Suite 1 column template.
+ *
+ * Available variables:
+ * - ds_content_wrapper: wrapper around content
+ * - attributes: content region attributes
+ * - ds_content: content region
+ */
+#}
+{%
+  set classes = [
+    'node',
+    'node--type-expert-content',
+    'node--type-export-content-book-page',
+    'node--view-mode-full',
+    'ds-1col',
+  ]
+%}
+<div{{ attributes.addClass(classes) }}>
+  {{ title_suffix.contextual_links }}
+
+  {{ ds_content }}
+
+  {{ book_navigation }}
+</div>

@@ -1,0 +1,47 @@
+//search date filter
+
+
+//search page
+.column {
+  display: flex;
+  flex-direction: column;
+  @include breakpoint($sm) {
+    flex-direction: row;
+  }
+}
+.column__left {
+  padding: 15px;
+  background: $color-grey;
+  @include breakpoint($sm) {
+    width: 25%;
+  }
+}
+.column__right {
+  padding: 20px 0;
+  background: $color-light-grey;
+  @include breakpoint($sm) {
+    width: 75%;
+    padding: 20px;
+  }
+}
+
+.view-solr-search {
+  .views-row {
+    margin-top: $base-spacing;
+  }
+}
+
+//facets
+.block-facets {
+  .facets-checkbox {
+    width: 15px;
+    height: 15px;
+  }
+  .facet-item {
+    background: white;
+    color: $color-blue;
+    list-style-type: none;
+    padding: 5px 10px;
+    margin: 5px 0;
+  }
+}

@@ -1,0 +1,23 @@
+<div class="views-row views-row--listing">
+	<div class="listing-item__content">
+		<div class="col-date">
+				{{ fields.field_start_date.content }}
+		</div>
+		<div class="col-title">
+			<h3 class="listing_item__title">
+			{% if fields.field_link_to_stream.content %}
+				<a href="{{ fields.field_link_to_stream.content|trim }}" target="_blank">
+			{% endif %}
+			{{ fields.title.content|render|striptags|trim }}</a>
+			{% if fields.field_link_to_stream.content %}
+			</a>
+			{% endif %}
+			</h3>
+		</div>
+		{% if fields.field_description.content %}
+			<div class="row-descr">
+				{{ fields.field_description.content }}
+			</div>
+		{% endif %}
+	</div>
+</div>

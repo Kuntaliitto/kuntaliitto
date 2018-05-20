@@ -1,0 +1,26 @@
+//header and its components
+
+//search icon
+.search-icon {
+  background: url(#{$assets-folder}/searcher.svg);
+  margin-left: $spacing-small-2;
+  height: 30px;
+  min-width: 30px;
+  background-size: 30px 30px;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+//header
+.header-wrapper {
+  background-color: $color-blue-3;
+
+  a {
+    color: white;
+
+    &:hover,
+    &:focus {
+      color: $color-hover-grey;
+    }
+  }
+}

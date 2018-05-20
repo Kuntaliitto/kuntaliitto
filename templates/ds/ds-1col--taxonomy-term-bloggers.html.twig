@@ -1,0 +1,26 @@
+{#
+/**
+ * @file
+ * Display Suite 1 column template.
+ *
+ * Available variables:
+ * - ds_content_wrapper: wrapper around content
+ * - attributes: content region attributes
+ * - ds_content: content region
+ */
+#}
+<{{ ds_content_wrapper }}{{ attributes.addClass('ds-1col', 'clearfix', 'blogger-box') }}>
+
+  {{ title_suffix.contextual_links }}
+
+  {% if content.field_picture['0'] %}
+    <div class="blogger-box__left">
+      {{ content.field_picture }}
+    </div>
+  {% endif %}
+  <div class="blogger-box__right">
+    {{ ds_content.taxonomy_term_title }}
+    {{ ds_content.description }}
+  </div>
+
+</{{ ds_content_wrapper }}>

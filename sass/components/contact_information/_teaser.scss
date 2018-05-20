@@ -1,0 +1,93 @@
+.contact-information.node--view-mode-teaser {
+  display: flex;
+  flex-grow: 1;
+  padding: 20px;
+  background: white;
+
+  // On the Contact Directory view this template is wrapped in yet another template
+  // which adds unnecessary padding. Dirty workaround to remove that padding.
+  .contact-directory-item & {
+    margin: -20px;
+  }
+
+  // Search results.
+  .view-solr-search & {
+    padding-right: 10px;
+    border-left: 7px solid $color-cyan;
+  }
+
+  h4 {
+    margin: 0 0 20px;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  .field__label {
+    margin-top: 20px;
+  }
+
+  .field--name-field-organization {
+    .field__label {
+      margin: 0;
+    }
+  }
+}
+
+.contact-information__image {
+  flex-shrink: 0;
+  width: 20%;
+  margin-right: 10px;
+
+  @include below-small {
+    display: none;
+  }
+
+  img {
+    border-radius: 50%;
+    width: 130px;
+    height: 130px;
+  }
+}
+
+.contact-information__content {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.contact-information__name {
+  display: flex;
+  width: 100%;
+
+  > a {
+    display: flex;
+    color: inherit;
+
+    &:focus,
+    &:hover {
+      color: $color-hover-grey;
+    }
+  }
+
+  .field__item {
+    margin-right: .25em;
+  }
+}
+
+.contact-information__title {
+  font-weight: normal;
+}
+
+.contact-information__first,
+.contact-information__second {
+  width: 50%;
+}
+
+.contact-information__organization {
+  .field:not(:last-of-type) .field__item {
+    &:after {
+      content: ",";
+    }
+  }
+}

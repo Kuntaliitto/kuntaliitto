@@ -1,0 +1,21 @@
+#views-exposed-form-municipalities-overview-full-view,
+#views-exposed-form-municipalities-overview-page-municipality-overview {
+  .form-item-name {
+    @include small {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  .form-item {
+    margin: 0;
+  }
+
+  label {
+    margin: 0 $spacing-small-2 $spacing-small-2 0;
+
+    @include small {
+      margin-bottom: 0;
+    }
+  }
+}

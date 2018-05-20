@@ -1,0 +1,17 @@
+<div class='organ-list text-formatted wrap--narrow'>
+    <h3 class="fi"></h3><h3 class="fi"></h3>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script>
+        var jqxhr = jQuery.getJSON("https://apps.kuntaliitto.fi/json/toimielimet/getAnswers.php", function (json) {
+            var html="";
+            jQuery.each(json,function(i,item) {
+                html=html+"<div class='organ-list-row'><a href='https://apps.kuntaliitto.fi/json/toimielimet/showAnswer.php?k=" + item  +"' target='_blank'>" + i + "</div>";
+            });
+            jQuery("#organ-list-items").html(html);
+        });
+
+    </script>
+    <div id='organ-list-items'>
+        Ei vastauksia
+    </div>
+</div>

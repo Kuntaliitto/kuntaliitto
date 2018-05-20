@@ -1,0 +1,44 @@
+.outbound-link {
+  &:after {
+    content: "";
+    display: inline-block;
+    vertical-align: text-top;
+    width: 1em;
+    height: 1em;
+    margin-top: .05em;
+    margin-left: .35em;
+    background-image: url("#{$assets-folder}/outbound.svg");
+    background-position: 100% 50%;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  &:hover,
+  &:focus {
+    &:after {
+      opacity: .35;
+    }
+  }
+}
+
+a span.ext {
+  display: inline-block;
+  padding-right: 14px;
+  vertical-align: -.05em;
+  //width: 1em;
+  height: 1em;
+  //margin-top: .05em;
+  margin-left: .35em;
+  background-image: url("#{$assets-folder}/outbound_blue.svg");
+  background-position: 100% 50%;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+a:hover span.ext {
+  background-image: url("#{$assets-folder}/outbound_gray.svg") !important;
+}
+
+.region-footer a span.ext {
+  background-image: url("#{$assets-folder}/outbound_white.svg");
+}

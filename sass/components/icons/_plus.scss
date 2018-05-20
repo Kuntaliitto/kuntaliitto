@@ -1,0 +1,26 @@
+// Plus and minus icons.
+.icon-plus,
+.icon-minus {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.25rem;
+
+  &:before {
+    content: "";
+    display: block;
+    width: 2.5rem;
+    height: 2.5rem;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-image: url('../assets/plus.svg');
+  }
+}
+
+.icon-minus {
+  &:before {
+    background-image: url('../assets/minus.svg');
+  }
+}

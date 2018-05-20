@@ -1,0 +1,35 @@
+.header-wrapper {
+  width: 100%;
+  // <main> is offset by a fixed margin therefore header needs
+  // to have fixed height.
+  height: $header-height-on-sm;
+  // Display menu above share buttons.
+  z-index: 105;
+
+  @include medium {
+    height: $header-height-on-md;
+  }
+}
+
+.header-wrapper__inner {
+  // Uncomment to make the header the same width as content.
+  //max-width: calc(#{$container-width} - #{$container-padding * 2});
+  max-width: $container-width;
+  margin: 0 auto;
+  position: relative;
+}
+
+.region-header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  .block-system-branding-block {
+    flex-grow: 2;
+  }
+
+  .block-language {
+    margin-left: $base-spacing;
+    margin-right: $base-spacing;
+  }
+}

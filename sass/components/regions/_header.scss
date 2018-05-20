@@ -1,0 +1,10 @@
+.header {
+  padding: 0 $container-padding;
+
+  .menu--primary-menu-en-,
+  .menu--primary-links {
+    @include below-medium {
+      display: none;
+    }
+  }
+}

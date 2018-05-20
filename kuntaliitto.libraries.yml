@@ -1,0 +1,16 @@
+global-css:
+  css:
+    theme:
+      css/main.css: {}
+
+global-js:
+  js:
+    js/headroom.min.js: {}
+    js/jquery.headroom.js: {}
+    js/script.js: {}
+    js/clickdimensions_com_ts.js: {}
+    js/clickdimensions.js: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.once
+    - core/drupalSettings

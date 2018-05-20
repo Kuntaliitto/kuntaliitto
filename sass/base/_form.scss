@@ -1,0 +1,19 @@
+input,
+select,
+textarea {
+  font-family: $base-font-family;
+}
+
+input,
+select {
+  background: white;
+}
+
+fieldset {
+  border: none;
+}
+
+details {
+  border: none;
+  margin: 0;
+}

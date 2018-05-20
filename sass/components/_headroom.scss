@@ -1,0 +1,37 @@
+//headroom.js for the header, hide on scrolldown, show on scrollup
+.headroom {
+  will-change: transform;
+  transition: transform 200ms linear;
+  position: fixed;
+  top: 0;
+}
+
+.headroom--pinned {
+  //display: block;
+  transform: translateY(0%);
+  //transition: 1s ease;
+  //top: 0;
+}
+.headroom--unpinned {
+  //display: none;
+  transform: translateY(-100%);
+}
+.headroom--top {
+  //position: static;
+  top: 0;
+}
+.headroom--not-top {
+  //position: fixed;
+}
+
+.user-logged-in {
+  .headroom {
+    top: 41px;
+  }
+}
+
+.toolbar-tray-open {
+  .headroom {
+    top: 82px
+  } 
+}

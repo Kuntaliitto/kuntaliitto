@@ -1,0 +1,59 @@
+.listing-item.listing-item--blog {
+  .listing-item__content {
+    display: flex;
+  }
+
+  .listing-item__authors {
+    flex-shrink: 0;
+    display: none;
+    width: 180px;
+    margin-right: 20px;
+
+    @include small {
+      display: block;
+    }
+  }
+
+  // Multiple blog authors.
+  .blog-authors-multiple {
+    .views-row {
+      &:last-of-type {
+        position: relative;
+        z-index: 2;
+        float: right;
+        margin-top: -60px;
+      }
+
+      img {
+        width: 115px;
+        height: auto;
+      }
+    }
+  }
+
+  .field--name-field-author {
+    display: flex;
+    margin-right: 0.5em;
+
+    a {
+      text-transform: uppercase;
+      font-weight: bold;
+      font-size: 15px;
+    }
+
+    // Separate multiple items with a comma.
+    &.field__items {
+      .field__item:not(:last-of-type) {
+        margin-right: .5em;
+
+        &:after {
+          content: ",";
+        }
+      }
+    }
+  }
+
+  img {
+    border-radius: 50%;
+  }
+}

@@ -1,0 +1,38 @@
+{#
+/**
+ * @file
+ * Kuntaliitto Listing Item template.
+ *
+ * Available variables:
+ * - attributes: content region attributes
+ * - content: contains the content regions
+ */
+#}
+<article{{ attributes.addClass('listing-item', 'listing-item--blog') }}>
+  {{ title_suffix.contextual_links }}
+
+  <div class="listing-item__content">
+    {% if content.field_author_images %}
+      <div class="listing-item__authors">
+        {{ content.field_author_images }}
+      </div>
+    {% endif %}
+
+    <div class="listing-item__content-wrapper">
+      {% if content.meta %}
+        <div class="listing-item__meta">
+          {{ content.meta }}
+        </div>
+      {% endif %}
+
+      <h3 class="listing-item__title">
+        {{ content.title }}
+      </h3>
+
+      <div class="listing-item__main">
+        {{ content.main }}
+      </div>
+    </div>
+  </div>
+
+</article>

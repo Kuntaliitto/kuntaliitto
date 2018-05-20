@@ -1,0 +1,26 @@
+.taxonomy-term.vocabulary-municipalities {
+  .field--name-field-content,
+  .field--name-field-paragraph-a,
+  .field--name-field-paragraph-b,
+  .field--name-field-paragraph-c {
+    width: 100%;
+  }
+
+  .field--name-field-paragraph-a,
+  .field--name-field-paragraph-b,
+  .field--name-field-paragraph-c {
+    > .field__item {
+      padding: 5px;
+    }
+  }
+
+  .field--name-field-paragraph-a,
+  .field--name-field-paragraph-b {
+    display: flex;
+    flex-wrap: wrap;
+
+    > .field__item {
+      width: 50%;
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{#
+/**
+ * @file
+ * Display Suite 1 column template.
+ *
+ * Available variables:
+ * - ds_content_wrapper: wrapper around content
+ * - attributes: content region attributes
+ * - ds_content: content region
+ */
+#}
+<{{ ds_content_wrapper }}{{ attributes.addClass('ds-1col', 'clearfix', 'publication-liftup') }}>
+
+  {{ title_suffix.contextual_links }}
+  <div class="publication-liftup--container">
+    {% set field_main_media = ds_content.field_product_image_small|render %}
+    {% if field_main_media %}
+      <div class="publication-liftup__image">
+        {{ ds_content.field_product_image_small }}
+      </div>
+    {% endif %}
+    <div class="publication-liftup__info">
+      <h2> {{ title }} </h2>
+      {{ ds_content.field_description_short }}
+      <div class="publication-liftup__info--price">
+        {{ ds_content.field_publication_year }}
+        {{ ds_content.field_price }}
+      </div>
+      <div class="publication-liftup__info--links">
+        {% if ds_content.field_file|render %}
+          {{ ds_content.field_file }}
+        {% else %}
+          {{ ds_content.field_url }}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+</{{ ds_content_wrapper }}>

@@ -1,0 +1,48 @@
+.view-mode-full-width-790,
+.view-mode-full-width-790-low {
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.media-external-video, 
+.media-image {
+  .field--name-name {
+    font-size: 14px;
+    margin-top: 5px;
+    margin-bottom: 25px;
+  }
+}
+
+//editor embed image styles
+figure.embedded-entity {
+  margin: 15px 0;
+  @include breakpoint($sm) {
+    width: 100%;
+  }
+  img {
+    width: 100%;
+    height: auto;   
+  }
+}
+
+figure.align-right {
+  @include breakpoint($sm) {
+    margin: 16px 0 0 16px;
+    width: 395px;
+    img {
+      width: 395px;
+    }
+  }
+}
+
+figure.align-left {
+  @include breakpoint($sm) {
+    margin: 16px 16px 0 0;
+    width: 395px;
+    img {
+      width: 395px;
+    }
+  }
+}

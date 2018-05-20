@@ -1,0 +1,9 @@
+@media print { 
+  .header-wrapper, 
+  footer {
+    display: none;
+  }
+  main {
+    margin-top: 0;
+  }
+}

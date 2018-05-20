@@ -1,0 +1,52 @@
+// The block.
+.breadcrumb {
+  position: relative;
+  padding: $spacing-small-1;
+  color: $color-blue-3;
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -100vw;
+    width: 300vw;
+    background: $color-light-grey;
+    z-index: -1;
+  }
+
+  ol {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  li {
+    &:before {
+      content: none;
+    }
+  }
+
+  a {
+    display: flex;
+    align-items: center;
+    color: $color-blue-3;
+    font-weight: bold;
+
+    &:after {
+      content: "/";
+      padding: 0 0.5em;
+    }
+  }
+
+  .svg-icon--home {
+    width: 1.5em;
+    height: 1.5em;
+    fill: $color-blue-3;
+  }
+}
+
+.field--name-dynamic-block-fieldnode-breadcrumbs {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}

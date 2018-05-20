@@ -1,0 +1,22 @@
+// Logo.
+.block-system-branding-block {
+  height: 45px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  // The logos are of different widths but should have equal height.
+  .site-logo {
+    display: block;
+    height: 18px;
+
+    @include medium {
+      height: 22px;
+    }
+  }
+
+  img {
+    width: auto;
+    height: 100%;
+  }
+}

@@ -1,0 +1,59 @@
+// Language switcher.
+.block-language {
+  ul:not(.contextual-links) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: $base-spacing;
+    list-style: none;
+
+    @include medium {
+      padding: 0;
+    }
+  }
+
+  li {
+    margin-right: 10px;
+    text-transform: uppercase;
+  }
+
+  a {
+    display: block;
+    width: 2em;
+    height: 2em;
+    padding: .5em 0;
+    line-height: 1em;
+    text-align: center;
+    border-radius: 50%;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: white;
+
+    &.is-active {
+      background: $color-dark-blue;
+    }
+  }
+}
+
+#block-languageswitcher-2 { //desktop
+  display: none;
+
+  @include medium {
+    display: block;
+  }
+}
+
+#block-languageswitcher-3 { //mobile
+  display: block;
+
+  @include medium {
+    display: none;
+  }
+
+  a {
+    &.is-active {
+      background: $color-blue;
+    }
+  }
+}

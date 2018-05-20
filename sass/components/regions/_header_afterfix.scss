@@ -1,0 +1,40 @@
+.header-afterfix {
+  margin-top: 1.5rem;
+
+  @include medium {
+    padding: 0 $container-padding;
+  }
+
+  @include below-medium {
+    display: none;
+    position: fixed;
+    width: 100vw;
+    max-height: calc(100vh - #{$header-height-on-sm});
+    overflow-y: scroll;
+    margin: 0;
+    background: $color-dark-blue;
+    box-shadow: 0 6px 8px -2px rgba(0,0,0,.5);
+
+    &.is-open {
+      display: block;
+    }
+
+    // The header is out of the viewport: make use of all the vertical space.
+    .headroom--unpinned & {
+      max-height: 100vh;
+    }
+  }
+
+  .menu--primary-menu-en-,
+  .menu--primary-links {
+    @include medium {
+      display: none;
+    }
+  }
+}
+
+.region-header-afterfix {
+  @include below-medium {
+    background: $color-dark-blue;
+  }
+}

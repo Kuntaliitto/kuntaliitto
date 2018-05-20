@@ -1,0 +1,83 @@
+html,
+body {
+  &.is-noscroll {
+    @include below-medium {
+      overflow: hidden;
+      //height: 100%;
+    }
+  }
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  background: white;
+  margin: 0;
+  font-size: $base-font-size;
+  font-family: $base-font-family;
+  color: $base-color;
+}
+
+* {
+  box-sizing: border-box;
+  word-wrap: break-word;
+}
+
+a {
+  text-decoration: none;
+  color: $color-blue;
+  &:hover, &:focus {
+    color: $color-hover-grey;
+  }
+}
+
+p {
+  line-height: $base-line-height;
+}
+
+h1, h2, h3 {
+  font-weight: bold;
+  a {
+    color: $color-black;
+  }
+}
+
+h1 {
+  font-size: 30px;
+}
+
+h2 {
+  font-size: 22px;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+ul {
+  margin: 0;
+}
+ul.menu {
+  margin-left: 0;
+  list-style: none;
+  padding: 0
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+blockquote {
+  background: $color-light-grey;
+  margin: 0;
+  padding: 0 $base-spacing;
+  border: 2px solid $color-dark-blue;
+  overflow: auto;
+
+  img {
+    margin: 5px;
+  }
+}

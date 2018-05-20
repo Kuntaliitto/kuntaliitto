@@ -1,0 +1,48 @@
+//global fields, blocks etc.
+
+//title
+.node--type-expert-content,
+.node--type-circular,
+.node--type-news,
+.node--type-expert-statement {
+  h1 {
+    margin-top: 10px;
+    margin-bottom: 0;
+  }
+}
+
+h1.page-title {
+  text-align: center;
+}
+
+.field--name-body,
+.field--name-field-description {
+  padding-bottom: 10px;
+  overflow: auto;
+}
+
+.layout-container--front-page h1 {
+  display: none;
+}
+
+.ajax-progress {
+  display: none;
+}
+
+.node__meta {
+  display: none;
+}
+
+.node__content {
+  background: white;
+}
+
+.form-actions {
+  margin: 0;
+}
+
+.comment {
+  .profile {
+    display: none;
+  }
+}

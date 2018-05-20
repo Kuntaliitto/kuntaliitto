@@ -1,0 +1,104 @@
+{#
+/**
+ * @file
+ * Theme override to display all the fields in a row.
+ *
+ * Available variables:
+ * - view: The view in use.
+ * - fields: A list of fields, each one contains:
+ *   - content: The output of the field.
+ *   - raw: The raw data for the field, if it exists. This is NOT output safe.
+ *   - class: The safe class ID to use.
+ *   - handler: The Views field handler controlling this field.
+ *   - inline: Whether or not the field should be inline.
+ *   - wrapper_element: An HTML element for a wrapper.
+ *   - wrapper_attributes: List of attributes for wrapper element.
+ *   - separator: An optional separator that may appear before a field.
+ *   - label: The field's label text.
+ *   - label_element: An HTML element for a label wrapper.
+ *   - label_attributes: List of attributes for label wrapper.
+ *   - label_suffix: Colon after the label.
+ *   - element_type: An HTML element for the field content.
+ *   - element_attributes: List of attributes for HTML element for field content.
+ *   - has_label_colon: A boolean indicating whether to display a colon after
+ *     the label.
+ *   - element_type: An HTML element for the field content.
+ *   - element_attributes: List of attributes for HTML element for field content.
+ * - row: The raw result from the query, with all data it fetched.
+ *
+ * @see template_preprocess_views_view_fields()
+ */
+#}
+<div class="contact-directory-item__left">
+  <div>{{ fields.field_image.content }}</div>
+</div>
+
+<div class="contact-directory-item__right">
+  <div class="contact-directory-item__right__top">
+    <span class="contact-directory-item__name">{{ fields.field_first_name.content }}</span>
+    <span class="contact-directory-item__name">{{ fields.field_last_name.content }}</span>
+    <span class="contact-directory-item__title">{{ fields.field_person_title.content }}</span>
+  </div>
+  <div class="contact-directory-item__info">
+    <div class="contact-directory-item__right__left">
+      <div class="contact-directory-item__contact-information">
+        {% trans %}
+          <span class="label">Contact information</span>
+        {% endtrans %}
+        {{ fields.field_phone_number.content }}<br>
+        {{ fields.field_contact_email.content }}
+      </div>
+      {% if fields.field_responsibilities.content %}
+        <div>
+          {% trans %}
+            <span class="label">Responsibilities</span>
+          {% endtrans %}
+          {{ fields.field_responsibilities.content }}
+        </div>
+      {% endif %}
+    {{ field.content }}
+    </div>
+    <div class="contact-directory-item__right__right">
+      {% if fields.field_division.content or fields.field_department.content  %}
+        <div>
+          {% trans %}
+            <span class="label">Organization</span>
+          {% endtrans %}
+
+          {% set field_organization = fields.field_organization.content|render|striptags|trim %}
+          {% set field_division = fields.field_division.content|render|striptags|trim %}
+          {% set field_department = fields.field_department.content|render|striptags|trim %}
+          {% set field_ad_group = fields.field_ad_group.content|render|striptags|trim %}
+          {% if field_organization %}
+            <div class="contact-directory-item__organization">
+              {{ field_organization }}{% if field_department or field_division or field_ad_group %},{% endif %}
+            </div>
+          {% endif %}
+          {% if field_division %}
+            <div class="contact-directory-item__division">
+              {{ field_division }}{% if field_department or field_ad_group %},{% endif %}
+            </div>
+          {% endif %}
+          {% if field_department %}
+            <div class="contact-directory-item__department">
+              {{ field_department }}{% if field_ad_group %},{% endif %}
+            </div>
+          {% endif %}
+          {% if field_ad_group %}
+            <div class="contact-directory-item__ad-group">
+              {{ field_ad_group }}
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+      {% if fields.field_additional_information.content %}
+      <div class="contact-directory-item__additional-information">
+        <span class="label">{{ fields.field_additional_information.label }}</span> 
+        {{ fields.field_additional_information.content }} 
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+

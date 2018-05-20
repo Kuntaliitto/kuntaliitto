@@ -1,0 +1,30 @@
+{#
+/**
+ * @file
+ * Display Suite 1 column template.
+ *
+ * Available variables:
+ * - ds_content_wrapper: wrapper around content
+ * - attributes: content region attributes
+ * - ds_content: content region
+ */
+#}
+<{{ ds_content_wrapper }}{{ attributes.addClass('ds-1col', 'clearfix', 'wrap') }}>
+
+  {{ title_suffix.contextual_links }}
+
+  <div {{ attributes.addClass('wrap--narrow') }}>
+  <h1{{ title_attributes.addClass('page-title') }}>  {{ title }} </h1>
+
+  {{ ds_content.body }}
+  </div>
+
+  <div align="center">
+    <iframe src="{{ node.field_external_url.value }}" frameborder="0" height="{{ node.field_embed_frame_height.value }}px" width="{{ node.field_embed_frame_width.value }}px"></iframe>
+  </div>
+
+  <div {{ attributes.addClass('wrap--narrow') }}>
+    {{ ds_content|without('body') }}
+  </div>
+
+</{{ ds_content_wrapper }}>

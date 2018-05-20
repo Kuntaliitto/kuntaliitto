@@ -1,0 +1,19 @@
+.contact-information.node--view-mode-full {
+  @extend .contact-information.node--view-mode-teaser;
+  flex-wrap: wrap;
+
+  .contact-information__content-wrapper,
+  .contact-information__liftups {
+    width: 100%;
+  }
+
+  .contact-information__content-wrapper {
+    @extend .wrap--narrow;
+    display: flex;
+    flex-grow: 1;
+  }
+
+  .contact-information__liftups {
+    margin-top: 20px;
+  }
+}
