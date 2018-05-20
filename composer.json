@@ -1,0 +1,19 @@
+{
+    "name": "Kuntaliitto/kuntaliitto",
+    "type": "drupal-custom-theme",
+    "authors": [
+        {
+            "name": "Jani Koski",
+            "email": ""
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "browser-sync": "^2.18.8",
+        "gulp": "^3.9.1",
+        "gulp-autoprefixer": "^3.1.1",
+        "gulp-sass": "^2.3.1",
+        "gulp-sass-glob": "^1.0.8",
+        "gulp-sourcemaps": "^2.4.1"
+    }
+}
